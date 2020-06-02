@@ -2,6 +2,7 @@
 Lesson One: Vue Install
   Learn Install Vue in html:
     +<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> or <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  
   Learn Syntax of Vue:
     +var app = new Vue({ //app is id example <div id = "app"> ^.^
        el: "#app" // defaut
