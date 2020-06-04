@@ -17,6 +17,9 @@
             <div class="product-info">
                 <h1>{{product}}</h1>
                 <!--{{name}} like phone call to data "name", data like mobilephone, When use call to data and call "name", then the content of data "name" will appear, my example data "product" have data is Socks, when I call {{product}}, then Socks will appear-->
+                <p v-if="colorSocks">White socks</p>
+                <p v-else>Black socks</p>
+                <!--Conditional if true, it will appear, false will not appear-->
             </div>
         </div>
     </div>
