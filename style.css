@@ -18,3 +18,21 @@ body{
     display: grid;
     grid-template-columns: auto auto;
 }
+
+.product-info .Size{
+    padding: 0px;
+    list-style: none;
+}
+
+.Size li{
+    margin: 0px 3px;
+    float: left;
+    border: 1px solid;
+    width: 30px;
+    text-align: center;
+    padding: 5px 10px;
+}
+
+.Size li:first-child{
+    margin: 0px;
+}

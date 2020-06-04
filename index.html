@@ -11,15 +11,33 @@
     <div id = "app">
         <div class="product">
             <div class="product-image">
+            
                 <img class="size-image" v-bind:src="image"/> <!--We want image data here, we see file main.js-->
                 <!--<img class="size-image" v-bind:src="Name"/> example (1) file main.js-->
+            
             </div>
             <div class="product-info">
+            
                 <h1>{{product}}</h1>
                 <!--{{name}} like phone call to data "name", data like mobilephone, When use call to data and call "name", then the content of data "name" will appear, my example data "product" have data is Socks, when I call {{product}}, then Socks will appear-->
+                
                 <p v-if="colorSocks">White socks</p>
                 <p v-else>Black socks</p>
                 <!--Conditional if true, it will appear, false will not appear -->
+                
+                <ul>
+                     <li v-for="info in infos"> {{ info }} </li>
+                </ul>
+                
+                <div v-for="variant in variants" :key="variant.variantId">
+                    <p> {{variant.variantColor}} </p>
+                </div>
+                
+                <ul class="Size">
+                    <p>Size</p>
+                    <li v-for="size in sizes"> {{ size }} </li>
+                </ul>
+
             </div>
         </div>
     </div>
