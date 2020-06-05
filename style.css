@@ -28,11 +28,19 @@ body{
     margin: 0px 3px;
     float: left;
     border: 1px solid;
-    width: 30px;
+    width: 50px;
     text-align: center;
     padding: 5px 10px;
 }
 
-.Size li:first-child{
-    margin: 0px;
+.Size div{
+    clear: both;
+}
+
+.cart{
+    border: 1px solid;
+    width: 80px;
+    position: absolute;
+    display: flex;
+    margin-top: 10px;
 }

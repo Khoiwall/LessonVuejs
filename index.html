@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Study Vuejs</title>
 </head>
@@ -30,18 +31,28 @@
                 </ul>
                 
                 <div v-for="variant in variants" :key="variant.variantId">
-                    <p> {{variant.variantColor}} </p>
+                    <p @mouseover="chaneImage(variant.variantImage)"> {{variant.variantColor}} </p>
                 </div>
                 
                 <ul class="Size">
                     <p>Size</p>
                     <li v-for="size in sizes"> {{ size }} </li>
+                    <div></div>
                 </ul>
+                
+                <button v-on:click="addToCart" class="add-cart btn btn-primary">Add cart</button>
+                <div class="cart">
+                    <p style="padding: 12px; margin: 0px;">Cart {{cart}}</p>
+                </div>
 
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="main.js"></script> 
 </body>

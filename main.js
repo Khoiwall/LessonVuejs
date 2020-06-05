@@ -9,13 +9,24 @@ var app = new Vue({
         variants: [
             {
                 variantId: 1,
-                variantColor: "White"
+                variantColor: "White",
+                variantImage: 'kyrie_white.jpg'
             },
             {
                 variantId: 2,
-                variantColor: "Black"
+                variantColor: "Black",
+                variantImage: 'kyrie_black.jpg'
             }
         ],
-        sizes: ["S", "M", "L", "XL", "XXL"]
+        sizes: ["S", "M", "L", "XL", "XXL"],
+        cart: 0
+    },
+    methods: {
+        chaneImage(variantImage){
+            this.image = variantImage;
+        },
+        addToCart(){
+            this.cart += 1
+        }
     }
 })
