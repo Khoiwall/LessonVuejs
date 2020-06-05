@@ -22,3 +22,7 @@ Lesson Three: Conditional Rendering
 Lesson Four: List Rendering
    https://www.vuemastery.com/courses/intro-to-vue-js/list-rendering
    commit lesson List Rendering
+   
+Lesson Five: Event Handling
+    https://www.vuemastery.com/courses/intro-to-vue-js/event-handling
+    commit lesson Event Handling
