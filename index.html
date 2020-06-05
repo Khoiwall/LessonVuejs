@@ -30,9 +30,7 @@
                      <li v-for="info in infos"> {{ info }} </li>
                 </ul>
                 
-                <div v-for="variant in variants" :key="variant.variantId">
-                    <p @mouseover="chaneImage(variant.variantImage)"> {{variant.variantColor}} </p>
-                </div>
+                <div v-for="variant in variants" :key="variant.variantId" class="box-color" :style="{backgroundColor: variant.variantColor} " @mouseover="chaneImage(variant.variantImage)"></div>
                 
                 <ul class="Size">
                     <p>Size</p>
@@ -40,7 +38,7 @@
                     <div></div>
                 </ul>
                 
-                <button v-on:click="addToCart" class="add-cart btn btn-primary">Add cart</button>
+                <button v-on:click="addToCart" class="add-cart btn btn-primary" :disabled="!colorSocks">Add cart</button>
                 <div class="cart">
                     <p style="padding: 12px; margin: 0px;">Cart {{cart}}</p>
                 </div>
