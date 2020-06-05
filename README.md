@@ -17,3 +17,8 @@ Lesson Two: Attribute Binding
       
 Lesson Three: Conditional Rendering
    https://www.vuemastery.com/courses/intro-to-vue-js/conditional-rendering
+   commit lesson Conditional Rendering
+   
+Lesson Four: List Rendering
+   https://www.vuemastery.com/courses/intro-to-vue-js/list-rendering
+   commit lesson List Rendering
