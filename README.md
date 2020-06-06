@@ -26,3 +26,7 @@ Lesson Four: List Rendering
 Lesson Five: Event Handling
     https://www.vuemastery.com/courses/intro-to-vue-js/event-handling
     commit lesson Event Handling
+    
+Lesson Six: Computed Properties
+    https://www.vuemastery.com/courses/intro-to-vue-js/vue-computed-properties
+    commit lesson Computed Properties
