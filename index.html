@@ -19,7 +19,7 @@
             </div>
             <div class="product-info">
             
-                <h1>{{product}}</h1>
+                <h1>{{title}}</h1>
                 <!--{{name}} like phone call to data "name", data like mobilephone, When use call to data and call "name", then the content of data "name" will appear, my example data "product" have data is Socks, when I call {{product}}, then Socks will appear-->
                 
                 <p v-if="colorSocks">White socks</p>
@@ -30,7 +30,7 @@
                      <li v-for="info in infos"> {{ info }} </li>
                 </ul>
                 
-                <div v-for="variant in variants" :key="variant.variantId" class="box-color" :style="{backgroundColor: variant.variantColor} " @mouseover="chaneImage(variant.variantImage)"></div>
+                <div v-for="variant in variants" :key="variant.variantId" class="box-color" :style="{backgroundColor: variant.variantColor} " @mouseover="chaneImage(variant.variantId)"></div>
                 
                 <ul class="Size">
                     <p>Size</p>

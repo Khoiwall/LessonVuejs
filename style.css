@@ -25,12 +25,18 @@ body{
 }
 
 .Size li{
+    cursor: pointer;
     margin: 0px 3px;
     float: left;
     border: 1px solid;
     width: 50px;
     text-align: center;
     padding: 5px 10px;
+}
+
+.Size li:hover{
+    transition: 0.5s;
+    background-color: rgb(149, 196, 243);
 }
 
 .Size div{
