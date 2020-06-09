@@ -49,6 +49,8 @@ body{
     position: absolute;
     display: flex;
     margin-top: 10px;
+    right: 15px;
+    top: 80px;
 }
 
 .box-color{

@@ -18,7 +18,7 @@ Vue.component('product',{
                 <h1>{{title}}</h1>
                 <!--{{name}} like phone call to data "name", data like mobilephone, When use call to data and call "name", then the content of data "name" will appear, my example data "product" have data is Socks, when I call {{product}}, then Socks will appear-->
                 
-                <p> {{colorSocks}} </p>
+                <p> {{colorSock}} </p>
                 <!--Conditional if true, it will appear, false will not appear -->
                 
                 <p> Shipping {{shipping}} </p>
@@ -36,9 +36,6 @@ Vue.component('product',{
                 </ul>
                 
                 <button v-on:click="addToCart" class="add-cart btn btn-primary" :disabled="!colorSocks">Add cart</button>
-                <div class="cart"> 
-                    <p style="padding: 12px; margin: 0px;">Cart {{cart}}</p>
-                </div>
 
             </div>
         </div>
@@ -50,6 +47,7 @@ Vue.component('product',{
             selection: 0, //image data, looke careful file index.html line <img class... v-bind:src="image" /> image it same image data
             //Name: '.jpg or .png' (1)
             infos: ["80 cotton", "20% polyester", "Gender-neutral"],
+            colorSocks: true,
             variants: [
                 {
                     variantId: 0,
@@ -65,7 +63,6 @@ Vue.component('product',{
                 }
             ],
             sizes: ["S", "M", "L", "XL", "XXL"],
-            cart: 0
         }
     },
     methods: {
@@ -74,10 +71,7 @@ Vue.component('product',{
         },
         
         addToCart(){
-            this.cart += 1;
-            if(this.cart === 10){
-                this.colorSocks = false;
-            }
+            this.$emit('add-to-card');
         }
     },
     computed:{
@@ -89,7 +83,7 @@ Vue.component('product',{
             return this.variants[this.selection].variantImage;
         },
         
-        colorSocks(){
+        colorSock(){
             return this.variants[this.selection].variantText;
         },
 
@@ -98,13 +92,27 @@ Vue.component('product',{
                 return 'Free'
             }
             return '2.99$'
-        }
+        },
     }
 })
 
 var app = new Vue({
     el: '#app',
     data:{
-        premium: true
+        premium: true,
+        cart: 0
+    },
+    methods:{
+        upDateCart(){
+            this.cart += 1;
+        },
+    },
+    computed:{
+        dontClick(){
+            if(this.cart < 10){
+                return true;
+            }
+            return false;
+        }
     }
 })
