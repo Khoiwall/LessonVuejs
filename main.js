@@ -38,6 +38,8 @@ Vue.component('product',{
                 <button v-on:click="addToCart" class="add-cart btn btn-primary" :disabled="!colorSocks">Add cart</button>
 
             </div>
+
+            <product-view></product-view>
         </div>
     `,
     data(){
@@ -94,6 +96,41 @@ Vue.component('product',{
             return '2.99$'
         },
     }
+}),
+
+Vue.component('product-view',{
+    template:`
+        <form>
+
+            <lable for="name">Name:</lable>
+            <input  id = "name" v-model="name">
+
+            <div class="comment">
+                <lable for="review" class="review-center">Review:</lable>
+                <textarea id ="review"></textarea>
+            </div>
+
+            <lable for="rating">Rating:</lable>
+            <select id="rating" v-model.number="rating">
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+            </select>
+
+            <p>
+                <input class="btn btn-primary" type="submit" value="submit">
+            </p>
+        </form>
+    `,
+    data(){
+        return{
+            name: null,
+            review:null,
+            rating:null
+        }
+    }
 })
 
 var app = new Vue({
@@ -107,12 +144,4 @@ var app = new Vue({
             this.cart += 1;
         },
     },
-    computed:{
-        dontClick(){
-            if(this.cart < 10){
-                return true;
-            }
-            return false;
-        }
-    }
 })

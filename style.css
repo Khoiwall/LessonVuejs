@@ -63,3 +63,18 @@ body{
 .not-click{
     background-color: black;
 }
+
+.comment{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+.review-center{
+    display: flex;
+    align-items: center;
+    width: auto;
+}
