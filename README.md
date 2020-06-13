@@ -30,3 +30,7 @@ Lesson Five: Event Handling
 Lesson Six: Computed Properties
     https://www.vuemastery.com/courses/intro-to-vue-js/vue-computed-properties
     commit lesson Computed Properties
+    
+Lesson Sevent: Components
+    https://www.vuemastery.com/courses/intro-to-vue-js/components
+    commit leeson Components
