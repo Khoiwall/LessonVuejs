@@ -38,3 +38,7 @@ Lesson Sevent: Components
 Lesson Eight:Communicating Events
     https://www.vuemastery.com/courses/intro-to-vue-js/communicating-events
     commit lesson Communicating Events
+
+Lesson nine: Forms
+    https://www.vuemastery.com/courses/intro-to-vue-js/forms
+    commit lesson Forms
