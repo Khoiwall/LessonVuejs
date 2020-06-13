@@ -15,8 +15,6 @@ body{
 
 .product{
     margin-top: 100px;
-    display: grid;
-    grid-template-columns: auto auto;
 }
 
 .product-info .Size{
@@ -77,4 +75,9 @@ body{
     display: flex;
     align-items: center;
     width: auto;
+}
+
+.rating{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

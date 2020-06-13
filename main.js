@@ -7,39 +7,55 @@ Vue.component('product',{
     },
     template:`
         <div class="product">
-            <div class="product-image">
-            
-                <img class="size-image" v-bind:src="image"/> <!--We want image data here, we see file main.js-->
-                <!--<img class="size-image" v-bind:src="Name"/> example (1) file main.js-->
-            
-            </div>
-            <div class="product-info">
-            
-                <h1>{{title}}</h1>
-                <!--{{name}} like phone call to data "name", data like mobilephone, When use call to data and call "name", then the content of data "name" will appear, my example data "product" have data is Socks, when I call {{product}}, then Socks will appear-->
-                
-                <p> {{colorSock}} </p>
-                <!--Conditional if true, it will appear, false will not appear -->
-                
-                <p> Shipping {{shipping}} </p>
 
+            <div class="row" style="width: 100%;">
+                <div class="product-image col-6">
+                
+                    <img class="size-image" v-bind:src="image"/> <!--We want image data here, we see file main.js-->
+                    <!--<img class="size-image" v-bind:src="Name"/> example (1) file main.js-->
+            
+                </div>
+
+                <div class="product-info col-6">
+                
+                    <h1>{{title}}</h1>
+                    <!--{{name}} like phone call to data "name", data like mobilephone, When use call to data and call "name", then the content of data "name" will appear, my example data "product" have data is Socks, when I call {{product}}, then Socks will appear-->
+                    
+                    <p> {{colorSock}} </p>
+                    <!--Conditional if true, it will appear, false will not appear -->
+                    
+                    <p> Shipping {{shipping}} </p>
+
+                    <ul>
+                        <li v-for="info in infos"> {{ info }} </li>
+                    </ul>
+                    
+                    <div v-for="variant in variants" :key="variant.variantId" class="box-color" :style="{backgroundColor: variant.variantColor} " @mouseover="chaneImage(variant.variantId)"></div>
+                    
+                    <ul class="Size">
+                        <p>Size</p>
+                        <li v-for="size in sizes"> {{ size }} </li>
+                        <div></div>
+                    </ul>
+                    
+                    <button v-on:click="addToCart" class="add-cart btn btn-primary" :disabled="!colorSocks">Add cart</button>
+
+                </div>
+            </div>
+
+            <div>
+                <h2>Review</h2>
+                <p>There are no reviews yet.</p>
                 <ul>
-                    <li v-for="info in infos"> {{ info }} </li>
+                    <li v-for="review in reviews">
+                        <p>{{review.name}}</p>
+                        <p>{{review.review}}</p>
+                        <p>{{review.rating}}</p>
+                    </li>
                 </ul>
-                
-                <div v-for="variant in variants" :key="variant.variantId" class="box-color" :style="{backgroundColor: variant.variantColor} " @mouseover="chaneImage(variant.variantId)"></div>
-                
-                <ul class="Size">
-                    <p>Size</p>
-                    <li v-for="size in sizes"> {{ size }} </li>
-                    <div></div>
-                </ul>
-                
-                <button v-on:click="addToCart" class="add-cart btn btn-primary" :disabled="!colorSocks">Add cart</button>
-
             </div>
 
-            <product-view></product-view>
+            <product-view @review-submitted="addReview"></product-view>
         </div>
     `,
     data(){
@@ -65,6 +81,7 @@ Vue.component('product',{
                 }
             ],
             sizes: ["S", "M", "L", "XL", "XXL"],
+            reviews: []
         }
     },
     methods: {
@@ -74,6 +91,9 @@ Vue.component('product',{
         
         addToCart(){
             this.$emit('add-to-card');
+        },
+        addReview(productReview){
+            this.reviews.push(productReview)
         }
     },
     computed:{
@@ -100,24 +120,33 @@ Vue.component('product',{
 
 Vue.component('product-view',{
     template:`
-        <form>
+        <form @submit.prevent="onSubmit">
+
+            <p v-if="errors.length">
+                <b>Please correct the following error(s):</b>
+                <ul>
+                    <li v-for="error in errors">{{error}}</li>
+                </ul>
+            </p>
 
             <lable for="name">Name:</lable>
-            <input  id = "name" v-model="name">
+            <input  id = "name" v-model="name" >
 
             <div class="comment">
                 <lable for="review" class="review-center">Review:</lable>
-                <textarea id ="review"></textarea>
+                <textarea id ="review" v-model="review" ></textarea>
             </div>
 
-            <lable for="rating">Rating:</lable>
-            <select id="rating" v-model.number="rating">
-                <option>5</option>
-                <option>4</option>
-                <option>3</option>
-                <option>2</option>
-                <option>1</option>
-            </select>
+            <div class="rating">
+                <lable for="rating">Rating:</lable>
+                <select id="rating" v-model.number="rating" >
+                    <option>5</option>
+                    <option>4</option>
+                    <option>3</option>
+                    <option>2</option>
+                    <option>1</option>
+                </select>
+            </div>
 
             <p>
                 <input class="btn btn-primary" type="submit" value="submit">
@@ -128,7 +157,30 @@ Vue.component('product-view',{
         return{
             name: null,
             review:null,
-            rating:null
+            rating:null,
+            errors: []
+        }
+    },
+    methods:{
+        onSubmit(){
+            if (this.name && this.review && this.rating){
+                let productReview = {
+                    name: this.name,
+                    review: this.review,
+                    rating: this.rating
+                }
+    
+                this.$emit('review-submitted', productReview)
+    
+                this.name = null,
+                this.review = null,
+                this.rating = null
+            }
+            else{
+                if(!this.name) this.errors.push('Name required')
+                if(!this.reviews) this.errors.push('Review required')
+                if(!this.rating) this.errors.push('Rating required')
+            }
         }
     }
 })
