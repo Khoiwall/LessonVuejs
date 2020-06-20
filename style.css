@@ -81,3 +81,12 @@ body{
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.tabs{
+    cursor: pointer;
+}
+
+.activeTab{
+    text-decoration: underline;
+    color: rgb(11, 193, 63);
+}
